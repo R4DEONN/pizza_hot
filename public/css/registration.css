@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Sansation';
+    src: url('fonts/Sansation-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Sansation-Regular.woff2') format('woff2'),
+        url('fonts/Sansation-Regular.woff') format('woff'),
+        url('fonts/Sansation-Regular.ttf') format('truetype'),
+        url('fonts/Sansation-Regular.svg#Sansation-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.page
+{
+    margin: 0;
+}
+
+.header 
+{
+    background: #F9EAED;
+    border-bottom: 2px solid #F0DBE0;
+    padding: 0px 95px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content_title
+{
+    font: 400 24px/1.13 "Sansation";
+    color: #000000;
+    margin: 52px 0px 31px;
+}
+
+.content_form
+{
+    border: 3px solid #B46874;
+    border-radius: 20px;
+    padding: 46px 47px;
+    margin-bottom: 71px;
+    width: 38%;
+    box-sizing: border-box;
+}
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: 31px;
+}
+
+.form-row_title
+{
+    margin: 0px 0px 9px;
+    font: 400 16px/1.13 "Sansation";
+    color: #3F434B;
+}
+
+.form-row_input
+{
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    border: 1px solid #D9D9D9;
+}
+
+.input-file 
+{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-file-text 
+{
+	padding: 15px 18px;
+	box-sizing: border-box;
+    font: 400 16px/1.13 "Sansation";
+    color: #000000;
+	width: 59%;
+    text-align: center;
+	border-radius: 0 12px 12px 0;
+	border: 1px solid #ddd;
+}
+
+.input-file-btn 
+{
+	cursor: pointer;
+	text-decoration: none;
+    font: 400 16px/1.13 "Sansation";
+    color: #FFFFFF;
+	text-align: center;
+    display: flex;
+    align-items: center;
+	border-radius: 12px 0 0 12px;
+	background-color: #CC3F55;
+	padding: 16px 32px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+
+.input-file input[type=file] 
+{
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Focus */
+.input-file input[type=file]:focus + .input-file-btn 
+{
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+ 
+/* Hover/active */
+.input-file:hover .input-file-btn 
+{
+	background-color: #ED3F5A;
+}
+
+.input-file:active .input-file-btn 
+{
+	background-color: #ED3F5A;
+}
+ 
+/* Disabled */
+.input-file input[type=file]:disabled + .input-file-btn 
+{
+	background-color: #eee;
+}
+
+.form-row_submit
+{
+    padding: 15px 108px;
+    font: 400 25px/1.13 "Sansation";
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 12px;
+    background: #CC3F55;
+    cursor: pointer;
+}
+
+.form-row .form-row_submit:hover
+{
+	background: #ED3F5A;
+}
+
+.footer
+{
+    border-top: 2px solid #D9D9D9;
+    background: #181818;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 16px;
+    padding: 34px 95px;
+}
+
+.footer_copyright
+{
+    font: 400 14.5px/1.1 "Sansation";
+    color: #B9B9B9;
+}
