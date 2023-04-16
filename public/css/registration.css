@@ -19,7 +19,7 @@
 {
     background: #F9EAED;
     border-bottom: 2px solid #F0DBE0;
-    padding: 0px 95px;
+    padding: 0px 6.6%;
     box-sizing: border-box;
     display: flex;
 }
@@ -42,7 +42,7 @@
 {
     border: 3px solid #B46874;
     border-radius: 20px;
-    padding: 46px 47px;
+    padding: 46px 3.3%;
     margin-bottom: 71px;
     width: 38%;
     box-sizing: border-box;
@@ -53,6 +53,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 31px;
+    width: 100%;
+    max-width: 546px;
 }
 
 .form-row_title
@@ -85,7 +87,9 @@
     font: 400 16px/1.13 "Sansation";
     color: #000000;
 	width: 59%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	border-radius: 0 12px 12px 0;
 	border: 1px solid #ddd;
 }
@@ -96,12 +100,12 @@
 	text-decoration: none;
     font: 400 16px/1.13 "Sansation";
     color: #FFFFFF;
-	text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
 	border-radius: 12px 0 0 12px;
 	background-color: #CC3F55;
-	padding: 16px 32px;
+	padding: 16px 30px;
 	box-sizing: border-box;
 	border: none;
 	margin: 0;
@@ -143,13 +147,15 @@
 
 .form-row_submit
 {
-    padding: 15px 108px;
+    padding: 15px 7.5%;
     font: 400 25px/1.13 "Sansation";
     color: #FFFFFF;
     border: 0;
     border-radius: 12px;
     background: #CC3F55;
     cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .form-row .form-row_submit:hover
@@ -164,7 +170,7 @@
     display: flex;
     align-items: flex-start;
     column-gap: 16px;
-    padding: 34px 95px;
+    padding: 34px 6.6%;
 }
 
 .footer_copyright

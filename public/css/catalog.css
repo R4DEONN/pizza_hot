@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Sansation';
+    src: url('fonts/Sansation-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Sansation-Regular.woff2') format('woff2'),
+        url('fonts/Sansation-Regular.woff') format('woff'),
+        url('fonts/Sansation-Regular.ttf') format('truetype'),
+        url('fonts/Sansation-Regular.svg#Sansation-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.page
+{
+    margin: 0;
+}
+
+.header 
+{
+    background: #F9EAED;
+    border-bottom: 2px solid #F0DBE0;
+    padding: 0px 6.6%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.catalog
+{
+    display: flex;
+    flex-wrap: wrap;
+    background: #F5F5F5;
+    padding: 0 95px 52px;
+}
+
+.catalog_title
+{
+    margin: 52px 46%;
+    font: 400 32px/1.13 "Sansation";
+    color: #000000;
+}
+
+.catalog_product
+{
+    max-width: 241px;
+}
+
+.product_image
+{
+    max-width: 241px;
+}
+
+.product_title
+{
+    font: 400 16px/1.13 "Sansation";
+    color: #000000;
+}
+
+.product_description
+{
+    font: 400 14px/1.14 "Sansation";
+    color: #595959;
+}
+
+.product_submenu
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product_price
+{
+    font: 400 18px/1.11 "Sansation";
+    color: #000000;
+}
+
+.product_select
+{
+    font: 400 14px/1.14 "Sansation";
+    color: #D13B3B;
+    background: #F8C1C1;
+    border: 0;
+    border-radius: 14px;
+    padding: 8px 35px;
+    cursor: pointer;
+}
+
+.product_select:hover
+{
+    background: #FFA0A0;
+}
+
+.footer
+{
+    border-top: 2px solid #D9D9D9;
+    background: #181818;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 16px;
+    padding: 34px 6.6%;
+}
+
+.footer_copyright
+{
+    font: 400 14.5px/1.1 "Sansation";
+    color: #B9B9B9;
+}
