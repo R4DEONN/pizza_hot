@@ -1,9 +1,10 @@
+<?php //require_once  ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Регистрация</title>
-  <link rel="stylesheet" href="/../../public/css/registration.css" />
+  <link rel="stylesheet" href="/css/registration.css" />
 </head>
 <body class="page">
   <header class="header">
@@ -11,14 +12,14 @@
   </header>
   <main class="content">
     <p class="content_title">Регистрация на сайте</p>
-    <form class="content_form form" action="" enctype="multipart/form-data" method="post">
+    <form class="content_form form" action="/register" enctype="multipart/form-data" method="post">
       <div class="form_form-row form-row">
         <p class="form-row_title">Имя</p>
         <input class="form-row_input" type="text" name="firstName" required />
       </div>
       <div class="form_form-row form-row">
         <p class="form-row_title">Фамилия</p>
-        <input class="form-row_input" type="text" name="secondName" required />
+        <input class="form-row_input" type="text" name="lastName" required />
       </div>  
       <div class="form_form-row form-row">
         <p class="form-row_title">Email</p>

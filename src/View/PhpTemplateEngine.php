@@ -13,16 +13,24 @@ class PhpTemplateEngine
         
         if (!ob_start())
         {
-            throw new \RuntimeException("Failed to render '$templateName': ob_start() failed";
+            throw new \RuntimeException("Failed to render '$templateName': ob_start() failed");
         }
         try
         {
-            self::re
+            self::requireTemplate($templatePath, $vars);
+            $contents = ob_get_contents();
         }
+        finally
+        {
+            ob_end_clean();
+        }
+
+        return $contents;
     }
 
     private static function requireTemplate(string $phpTemplatePath, array $phpTemplateVariables): void
     {
-        extract
+        extract($phpTemplateVariables, EXTR_SKIP);
+        require($phpTemplatePath);
     }
 }

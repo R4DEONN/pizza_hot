@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends AbstractController
 {
     private const HTTP_STATUS_303_SEE_OTHER = 303;
-
-    private UserTable $userTable;
-
     private const USER_ID = "user_id";
     private const EMAIL = "email";
     private const LAST_NAME = "lastName";
@@ -27,6 +24,8 @@ class UserController extends AbstractController
     private const ERROR = "error";
     private const NAME = "name";
     private const TMP_NAME = "tmp_name";
+
+    private UserTable $userTable;
     
     public function __construct()
     {
@@ -36,44 +35,30 @@ class UserController extends AbstractController
 
     public function index(): Response
     {
-        require __DIR__ . '/../View/register.php';
+        $contents = PhpTemplateEngine::render('register.php');
+        return new Response($contents);
     }
 
-    public function createUser(array $requestData): void
+    public function createUser(Request $request): Response
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') 
-        {
-            $this->writeRedirectSeeOther('/');
-            return;
-        }
-
         $user = new User(
             null, 
-            $requestData[self::FIRST_NAME], 
-            $requestData[self::LAST_NAME],  
-            $requestData[self::EMAIL],  
-            $requestData[self::PHONE], 
+            $request->get(self::FIRST_NAME), 
+            $request->get(self::LAST_NAME),  
+            $request->get(self::EMAIL),  
+            $request->get(self::PHONE), 
             null
         );
         $userId = $this->userTable->add($user);
-        $this->addAvatar($userId, $requestData[self::AVATAR]);
-        $redirectUrl = "/show_user.php?user_id=$userId";
-        $this->writeRedirectSeeOther($redirectUrl);
+        
+        return $this->redirectToRoute(
+            'catalog',
+            [],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
-    private function addAvatar(int $userId, array $avatar): void
-    {
-        if (!empty($avatar) && $avatar[self::ERROR] == UPLOAD_ERR_OK) 
-        {
-            $extension = pathinfo($avatar[self::NAME], PATHINFO_EXTENSION);
-            $fileName = "avatar$userId.$extension";
-            $fileFullPath = "/src/View/uploads/$fileName"; 
-            rename($avatar[self::TMP_NAME], $fileFullPath);
-            $this->userTable->updateAvatar($userId, $fileName); 
-        }
-    }
-
-    private function writeRedirectSeeOther(string $url): void
+    private static function writeRedirectSeeOther(string $url): void
     {
         header('Location: ' . $url, true, self::HTTP_STATUS_303_SEE_OTHER);
     }

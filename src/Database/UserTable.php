@@ -18,8 +18,8 @@ class UserTable
     public function add(User $user): int|bool
     {
         $query = <<<SQL
-            INSERT INTO user (first_name, last_name, email, phone, avatar_path)
-            VALUES (:first_name, :last_name, :email, :phone, :avatar_path)  
+            INSERT INTO user (first_name, last_name, email, phone, avatar_url)
+            VALUES (:first_name, :last_name, :email, :phone, :avatar_url)  
             SQL;
         $statement = $this->connection->prepare($query);
         
@@ -30,7 +30,7 @@ class UserTable
                 ':last_name' => $user->getLastName(),
                 ':email' => $user->getEmail(),
                 ':phone' => $user->getPhone(),
-                ':avatar_path' => $user->getAvatarPath()
+                ':avatar_url' => $user->getAvatarPath()
             ]);  
         } 
         catch (\PDOException $e) 

@@ -13,7 +13,7 @@ class User
    private string $phone;
    private ?string $avatarPath;
 
-   public function __construct(?int $id, string $firstName, string $lastName, string $email, ?string $phone, ?string $avatarPath)
+   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath)
    {
        $this->id = $id;
        $this->firstName = $firstName;
