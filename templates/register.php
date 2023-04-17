@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Регистрация</title>
-  <link rel="stylesheet" href="css/registration.css" />
+  <link rel="stylesheet" href="/../../public/css/registration.css" />
 </head>
 <body class="page">
   <header class="header">

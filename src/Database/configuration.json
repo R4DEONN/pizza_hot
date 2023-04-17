@@ -1,0 +1,5 @@
+{
+    "dsn": "mysql:host=127.0.0.1;dbname=pizza_hot",
+    "user": "root",
+    "password": "Vuzohe67"
+}
