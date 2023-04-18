@@ -8,22 +8,17 @@ use App\Database\ConnectionProvider;
 use App\Database\UserTable;
 use App\Model\User;
 use App\View\PhpTemplateEngine;
+use http\Exception\RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
-    private const HTTP_STATUS_303_SEE_OTHER = 303;
-    private const USER_ID = "user_id";
     private const EMAIL = "email";
     private const LAST_NAME = "lastName";
     private const FIRST_NAME = "firstName";
     private const PHONE = "phone";
-    private const AVATAR = "avatar";
-    private const ERROR = "error";
-    private const NAME = "name";
-    private const TMP_NAME = "tmp_name";
 
     private UserTable $userTable;
     
@@ -49,7 +44,10 @@ class UserController extends AbstractController
             $request->get(self::PHONE), 
             null
         );
-        $userId = $this->userTable->add($user);
+       if (!$userId = $this->userTable->add($user))
+       {
+           throw new RuntimeException('Пользователь не был добавлен в базу данных');
+       }
         
         return $this->redirectToRoute(
             'catalog',
