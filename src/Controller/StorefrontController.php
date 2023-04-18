@@ -24,7 +24,8 @@ class StorefrontController extends AbstractController
 
     public function index(): Response
     {
-        $contents = PhpTemplateEngine::render('catalog.php');
+        $vars['rows'] = $this->productTable->getAllProduct();
+        $contents = PhpTemplateEngine::render('catalog.php', $vars);
         return new Response($contents);
     }
 }

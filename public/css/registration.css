@@ -73,6 +73,12 @@
     border: 1px solid #D9D9D9;
 }
 
+.form-row_error
+{
+    font: 400 14px/1.14 "Sansation";
+    color: 'red';
+}
+
 .input-file 
 {
     display: flex;
@@ -156,6 +162,7 @@
     cursor: pointer;
     box-sizing: border-box;
     width: 100%;
+    margin-top: 20px;
 }
 
 .form-row .form-row_submit:hover

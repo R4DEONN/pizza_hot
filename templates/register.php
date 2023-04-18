@@ -1,4 +1,3 @@
-<?php //require_once  ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -14,20 +13,32 @@
     <p class="content_title">Регистрация на сайте</p>
     <form class="content_form form" action="/register" enctype="multipart/form-data" method="post">
       <div class="form_form-row form-row">
-        <p class="form-row_title">Имя</p>
+        <p class="form-row_title">Имя*</p>
         <input class="form-row_input" type="text" name="firstName" required />
+        <?php if (!empty($errors['firstName'])): ?>
+          <p><?= $errors['firstName']?></p>
+        <?php endif; ?>
       </div>
       <div class="form_form-row form-row">
-        <p class="form-row_title">Фамилия</p>
+        <p class="form-row_title">Фамилия*</p>
         <input class="form-row_input" type="text" name="lastName" required />
+        <?php if (!empty($errors['firstName'])): ?>
+          <p class="form-row_error"><?= $errors['firstName']?></p>
+        <?php endif; ?>
       </div>  
       <div class="form_form-row form-row">
-        <p class="form-row_title">Email</p>
+        <p class="form-row_title">Email*</p>
         <input class="form-row_input" type="email" name="email" required />
+        <?php if (!empty($errors['firstName'])): ?>
+          <p><?= $errors['firstName']?></p>
+        <?php endif; ?>
       </div>  
       <div class="form_form-row form-row">
-        <p class="form-row_title">Номер телефона</p>
+        <p class="form-row_title">Номер телефона*</p>
         <input class="form-row_input" type="tel" name="phone" required />
+        <?php if (!empty($errors['firstName'])): ?>
+          <p><?= $errors['firstName']?></p>
+        <?php endif; ?>
       </div>  
       <div class="form_form-row form-row">
         <p class="form-row_title">Аватар</p>
@@ -36,6 +47,9 @@
             <input type="file" name="avatar">        
             <span class="input-file-text" type="text">Файл не выбран</span>
         </label>
+        <?php if (!empty($errors['firstName'])): ?>
+          <p><?= $errors['firstName']?></p>
+        <?php endif; ?>
       </div>
       <div class="form_form-row form-row">
         <button class="form-row_submit" type="submit">Зарегестрироваться</button>

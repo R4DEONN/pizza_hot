@@ -56,10 +56,4 @@ class UserController extends AbstractController
             [],
             Response::HTTP_SEE_OTHER
         );
-    }
-
-    private static function writeRedirectSeeOther(string $url): void
-    {
-        header('Location: ' . $url, true, self::HTTP_STATUS_303_SEE_OTHER);
-    }
-}
+    }}

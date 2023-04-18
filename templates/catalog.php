@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var array $rows
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,19 +17,21 @@
   </header>
   <main class="catalog">
     <p class="catalog_title">Пицца</p>
+    <?php foreach ($rows as $row): ?>
     <article class="catalog_product product">
         <main class="product_content">
-            <img src="image/54cheese.webp" alt="54-cheese" class="product_image" />
-            <p class="product_title">Пятьдесят четыре сыра</p>
+            <img src=<?= 'image/' . $row['image_url'] ?> class="product_image" />
+            <p class="product_title"><?= $row['title'] ?></p>
             <p class="product_description">
-                Камамбер, пармезан, моцарелла, бри, сулугуни, чеддер, рикотта, маскарпоне, маасдам, гауда, рокфор, фета, брынза, чечил, эдам, эмменталь, грюйер, тильзитер, слывочный, стилтон, адыгейский, российский, буррата, швейцарский, реблошон и др.
+                <?= $row['subtitle'] ?>
             </p>
         </main>
         <footer class="product_submenu">
-            <span class="product_price">549 ₽</span>
+            <span class="product_price"><?= $row['price'] ?> ₽</span>
             <button class="product_select">Заказать</button>
         </footer>
     </article>
+    <?php endforeach; ?>
   </main>
   <footer class="footer">
     <img src="image/LogoFooter.svg" alt="Shokudoo" class="footer_logo" />

@@ -28,13 +28,16 @@
 {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
+    column-gap: 105px;
+    row-gap: 55px;
     background: #F5F5F5;
-    padding: 0 95px 52px;
+    padding: 0 95px 75px;
 }
 
 .catalog_title
 {
-    margin: 52px 46%;
+    margin: 52px 46% 0;
     font: 400 32px/1.13 "Sansation";
     color: #000000;
 }
@@ -42,6 +45,12 @@
 .catalog_product
 {
     max-width: 241px;
+    padding-bottom: 32px;
+}
+
+.product
+{
+    position: relative;
 }
 
 .product_image
@@ -66,6 +75,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .product_price
