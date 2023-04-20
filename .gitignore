@@ -10,3 +10,4 @@
 ###< symfony/framework-bundle ###
 
 /php_course_blog/
+/.vscode/
