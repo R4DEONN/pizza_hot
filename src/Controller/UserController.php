@@ -7,8 +7,7 @@ namespace App\Controller;
 use App\Database\ConnectionProvider;
 use App\Database\UserTable;
 use App\Model\User;
-use App\View\PhpTemplateEngine;
-use http\Exception\RuntimeException;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,8 +29,7 @@ class UserController extends AbstractController
 
     public function index(): Response
     {
-        $contents = PhpTemplateEngine::render('register.php');
-        return new Response($contents);
+        return $this->render("auth/register.html.twig");
     }
 
     public function createUser(Request $request): Response

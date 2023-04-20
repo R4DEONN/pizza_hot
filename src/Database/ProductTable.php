@@ -14,15 +14,15 @@ class ProductTable
         $this->connection = $connection;
     }
 
-    public function getAllProduct(): array
+    public function list(): array
     {
         $query = <<<SQL
             SELECT title, subtitle, price, image_url
             FROM product
             ORDER BY id
         SQL;
-        $statment = $this->connection->query($query);
-        $result = $statment->fetchAll();
+        $statement = $this->connection->query($query);
+        $result = $statement->fetchAll();
 
         return $result; 
     }
