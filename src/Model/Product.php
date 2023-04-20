@@ -9,15 +9,15 @@ class Product
     private string $title;
     private string $subtitle;
     private int $price;
-    private string $image_url;
+    private string $imageUrl;
 
-    public function __construct(?int $id, string $title, string $subtitle, int $price, string $image_url)
+    public function __construct(?int $id, string $title, string $subtitle, int $price, string $imageUrl)
     {
         $this->id = $id;
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->price = $price;
-        $this->image_url = $image_url;
+        $this->imageUrl = $imageUrl;
     }
 
     public function getId(): ?int
@@ -42,6 +42,6 @@ class Product
 
     public function getImageUrl(): string
     {
-        return $this->image_url;
+        return $this->imageUrl;
     }
 }

@@ -2,12 +2,12 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="//{{ host }}/css/footer.css" />
 {% endblock %}
 
 {% block footer %}
 <footer class="footer">
-    <img src="image/LogoFooter.svg" alt="Shokudoo" class="footer_logo" />
+    <img src="//{{ host }}/image/LogoFooter.svg" alt="Shokudoo" class="footer_logo" />
     <span class="footer_copyright">© 2023</span>
 </footer>
 {% endblock %}

@@ -12,3 +12,8 @@ catalog:
     path: /catalog
     methods: GET
     controller: App\Controller\StorefrontController::index
+
+order:
+    path: /order/{productId}
+    methods: GET
+    controller: App\Controller\OrderForm::index

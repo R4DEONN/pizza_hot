@@ -1,0 +1,21 @@
+{% extends "footer.html.twig" %}
+
+{% block title %}
+    Оформление заказа
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="//{{ host }}/css/products/order.css" />
+{% endblock %}
+
+{% block main %}
+    <main class="order">
+        <img src="//{{ host }}/image/{{ pizza.imageUrl }}" />
+        <p>{{ pizza.title }}</p>
+        <p>{{ pizza.subtitle }}</p>
+        <form>
+            <button type="submit">Оплатить {{ pizza.price }} ₽</button>
+        </form>
+    </main>
+{% endblock %}

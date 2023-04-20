@@ -29,7 +29,8 @@ class UserController extends AbstractController
 
     public function index(): Response
     {
-        return $this->render("auth/register.html.twig");
+        $vars['host'] = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+        return $this->render('auth/register.html.twig', $vars);
     }
 
     public function createUser(Request $request): Response

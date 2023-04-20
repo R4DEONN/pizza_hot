@@ -6,7 +6,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-  <link rel="stylesheet" href="css/products/catalog.css" />
+  <link rel="stylesheet" href="//{{ host }}/css/products/catalog.css" />
 {% endblock %}
 
 {% block main %}
@@ -15,7 +15,7 @@
     {% for pizza in pizzas  %}
     <article class="catalog_product product">
         <main class="product_content">
-            <img src="image/{{ pizza.image_url }}" alt="{{ pizza.title }}" class="product_image" />
+            <img src="//{{ host }}/image/{{ pizza.imageUrl }}" alt="{{ pizza.title }}" class="product_image" />
             <p class="product_title">{{ pizza.title }}</p>
             <p class="product_description">
                 {{ pizza.subtitle }}
@@ -23,7 +23,9 @@
         </main>
         <footer class="product_submenu">
             <span class="product_price">{{ pizza.price }} ₽</span>
-            <button class="product_select">Заказать</button>
+            <a href="{{ path("order", {productId: pizza.id}) }}" >
+                <button class="product_select">Заказать</button>
+            </a>
         </footer>
     </article>
     {% endfor %}
