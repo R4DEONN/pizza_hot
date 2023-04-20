@@ -1,0 +1,15 @@
+.footer
+{
+    border-top: 2px solid #D9D9D9;
+    background: #181818;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 16px;
+    padding: 34px 6.6%;
+}
+
+.footer_copyright
+{
+    font: 400 14.5px/1.1 "Sansation";
+    color: #B9B9B9;
+}

@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Sansation';
+    src: url('fonts/Sansation-Regular.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Sansation-Regular.woff2') format('woff2'),
+    url('fonts/Sansation-Regular.woff') format('woff'),
+    url('fonts/Sansation-Regular.ttf') format('truetype'),
+    url('fonts/Sansation-Regular.svg#Sansation-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.page
+{
+    margin: 0;
+}
