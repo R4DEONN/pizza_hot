@@ -44,7 +44,7 @@ class User
         return $this->email;
    }
 
-   public function getPhone(): ?string
+   public function getPhone(): string
    {
         return $this->phone;
    }

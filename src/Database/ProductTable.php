@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Database;
@@ -35,8 +36,7 @@ class ProductTable
         $rows = $statement->fetchAll();
 
         $products = [];
-        foreach ($rows as $row)
-        {
+        foreach ($rows as $row) {
             $products[] = $this->createProductFromRow($row);
         }
 
@@ -66,8 +66,9 @@ class ProductTable
         ]);
         $product = $statement->fetch(\PDO::FETCH_ASSOC);
         if (!$product) {
-            throw new RuntimeException("Product with
-             id $productId could not be found");
+            throw new RuntimeException(
+                "Product with id $productId could not be found"
+            );
         }
 
         return $this->createProductFromRow($product);
