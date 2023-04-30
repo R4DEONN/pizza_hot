@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Database\ConnectionProvider;
-use App\Database\UserTable;
-use App\Model\User;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,12 +19,11 @@ class UserController extends AbstractController
     private const FIRST_NAME = "firstName";
     private const PHONE = "phone";
 
-    private UserTable $userTable;
+    private UserRepository $userRepository;
     
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
-        $connection = ConnectionProvider::connectDatabase();
-        $this->userTable = new UserTable($connection);
+        $this->userRepository = $userRepository;
     }
 
     public function index(): Response
@@ -41,12 +40,11 @@ class UserController extends AbstractController
             $request->get(self::LAST_NAME),  
             $request->get(self::EMAIL),  
             $request->get(self::PHONE), 
-            null
+            null,
+            0
         );
-       if (!$userId = $this->userTable->add($user))
-       {
-           throw new RuntimeException('Пользователь не был добавлен в базу данных');
-       }
+
+        $userId = $this->userRepository->store($user);
         
         return $this->redirectToRoute(
             'catalog',

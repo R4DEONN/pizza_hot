@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Entity;
 
 class User
 {
@@ -11,19 +11,21 @@ class User
    private string $lastName;
    private string $email;
    private string $phone;
-   private ?string $avatarPath;
+   private ?string $avatarUrl;
+   private int $admin;
 
-   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath)
+   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath, int $admin)
    {
        $this->id = $id;
        $this->firstName = $firstName;
        $this->lastName = $lastName;
        $this->email = $email;
        $this->phone = $phone;
-       $this->avatarPath = $avatarPath;
+       $this->avatarUrl = $avatarPath;
+       $this->admin = $admin;
    }
 
-   public function getUserId(): ?int
+   public function getId(): ?int
    {
        return $this->id;
    }
@@ -41,16 +43,21 @@ class User
 
    public function getEmail(): string
    {
-        return $this->email;
+       return $this->email;
    }
 
    public function getPhone(): string
    {
-        return $this->phone;
+       return $this->phone;
    }
 
-   public function getAvatarPath(): ?string
+   public function getAvatarUrl(): ?string
    {
-        return $this->avatarPath;
+       return $this->avatarUrl;
+   }
+
+   public function getAdmin(): int
+   {
+       return $this->admin;
    }
 }
