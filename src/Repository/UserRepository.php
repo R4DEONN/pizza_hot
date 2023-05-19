@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository
 {
-
     private EntityManagerInterface $entityManager;
     private EntityRepository $repository;
 

@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Database\ConnectionProvider;
-use App\Entity\User;
-use App\Repository\UserRepository;
-use RuntimeException;
+use App\Service\ImageServiceInterface;
+use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,11 +17,13 @@ class UserController extends AbstractController
     private const FIRST_NAME = "firstName";
     private const PHONE = "phone";
 
-    private UserRepository $userRepository;
+    private UserServiceInterface $userService;
+    private ImageServiceInterface $imageService;
     
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserServiceInterface $userService, ImageServiceInterface $imageService)
     {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
+        $this->imageService = $imageService;
     }
 
     public function index(): Response
@@ -34,21 +34,20 @@ class UserController extends AbstractController
 
     public function createUser(Request $request): Response
     {
-        $user = new User(
-            null, 
-            $request->get(self::FIRST_NAME), 
+        $imagePath = (isset($_FILES['avatar'])) ? $this->imageService->moveImageToUploads($_FILES['avatar']) : null;
+
+        $this->userService->createUser(
+            $request->get(self::FIRST_NAME),
             $request->get(self::LAST_NAME),  
             $request->get(self::EMAIL),  
-            $request->get(self::PHONE), 
-            null,
-            0
+            $request->get(self::PHONE),
+            $imagePath,
         );
 
-        $userId = $this->userRepository->store($user);
-        
         return $this->redirectToRoute(
             'catalog',
             [],
             Response::HTTP_SEE_OTHER
         );
-    }}
+    }
+}

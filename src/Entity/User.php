@@ -12,9 +12,9 @@ class User
    private string $email;
    private string $phone;
    private ?string $avatarUrl;
-   private int $admin;
+   private int $role;
 
-   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath, int $admin)
+   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath, int $role)
    {
        $this->id = $id;
        $this->firstName = $firstName;
@@ -22,7 +22,7 @@ class User
        $this->email = $email;
        $this->phone = $phone;
        $this->avatarUrl = $avatarPath;
-       $this->admin = $admin;
+       $this->role = $role;
    }
 
    public function getId(): ?int
@@ -56,8 +56,8 @@ class User
        return $this->avatarUrl;
    }
 
-   public function getAdmin(): int
+   public function getRole(): int
    {
-       return $this->admin;
+       return $this->role;
    }
 }
