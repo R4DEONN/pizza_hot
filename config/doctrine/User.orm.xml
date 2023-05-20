@@ -16,7 +16,7 @@
         <field name="email" column="email" type="string" length="255" nullable="false" unique="true" />
         <field name="phone" column="phone" type="string" length="30" nullable="false" />
         <field name="avatarUrl" column="avatar_url" type="string" length="255" nullable="true" />
-        <field name="role" column="role" type="boolean" default="0" />
+        <field name="role" column="role" type="integer" default="0" />
 
     </entity>
 
