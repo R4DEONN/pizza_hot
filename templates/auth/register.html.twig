@@ -6,42 +6,49 @@
 
 {% block stylesheets %}
   {{ parent() }}
-  <link rel="stylesheet" href="//{{ host }}/css/auth/registration.css" />
+  <link rel="stylesheet" href="/css/auth/auth.css" />
 {% endblock %}
 
 
 {% block main %}
   <main class="content">
     <p class="content_title">Регистрация на сайте</p>
-    <form class="content_form form" action="{{ path('register') }}" enctype="multipart/form-data" method="post">
+    {{ form_start(form, {'class': 'content_form form'}) }}
+    <div class="content_form form">
       <div class="form_form-row form-row">
         <p class="form-row_title">Имя*</p>
-        <input class="form-row_input" type="text" name="firstName" required />
+        {{ form_widget(form.firstName) }}
       </div>
       <div class="form_form-row form-row">
         <p class="form-row_title">Фамилия*</p>
-        <input class="form-row_input" type="text" name="lastName" required />
+        {{ form_widget(form.lastName) }}
       </div>
       <div class="form_form-row form-row">
         <p class="form-row_title">Email*</p>
-        <input class="form-row_input" type="email" name="email" required />
+        {{ form_widget(form.email) }}
+      </div>
+      <div class="form_form-row form-row">
+        <p class="form-row_title">Пароль*</p>
+        {{ form_widget(form.password) }}
       </div>
       <div class="form_form-row form-row">
         <p class="form-row_title">Номер телефона*</p>
-        <input class="form-row_input" type="tel" name="phone" required />
+        {{ form_widget(form.phone) }}
       </div>
       <div class="form_form-row form-row">
         <p class="form-row_title">Аватар</p>
         <label class="input-file">
             <span class="input-file-btn">Выберите файл</span>
-            <input type="file" name="avatar">        
+            {{ form_widget(form.avatar) }}
             <span class="input-file-text" type="text">Файл не выбран</span>
         </label>
       </div>
       <div class="form_form-row form-row">
-        <button class="form-row_submit" type="submit">Зарегестрироваться</button>
-      </div>     
-    </form>
+        {{ form_widget(form.register, { 'label': 'Регистрация' }) }}
+      </div>
+    </div>
+    {{ form_end(form) }}
+
   </main>
 
   <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 class ImageService implements ImageServiceInterface
 {
     private const UPLOADS_PATH = DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'uploads';
@@ -13,24 +15,24 @@ class ImageService implements ImageServiceInterface
         'image/webp' => '.webp',
     ];
 
-    public function moveImageToUploads(array $fileInfo): ?string
+    public function moveImageToUploads(UploadedFile $file): ?string
     {
-        if ($fileInfo['error'] === UPLOAD_ERR_NO_FILE)
+        if ($file->getError() === UPLOAD_ERR_NO_FILE)
         {
             return null;
         }
 
-        $fileName = $fileInfo['name'];
-        $fileType = $fileInfo['type'];
-        $imageExt = self::ALLOWED_MIME_TYPES_MAP[$fileType] ?? null;
+        $name = $file->getClientOriginalName();
+        $type = $file->getMimeType();
+        $imageExt = self::ALLOWED_MIME_TYPES_MAP[$type] ?? null;
 
         if (!$imageExt)
         {
-            throw new InvalidArgumentException("File '$fileName' is not an image");
+            throw new InvalidArgumentException("File '$name' is not an image");
         }
 
         $destFileName = uniqid('image', true) . $imageExt;
-        return $this->moveFileToUploads($fileInfo, $destFileName);
+        return $this->moveFileToUploads($file, $destFileName);
     }
 
     public function getUploadUrlPath(string $fileName): string
@@ -49,11 +51,11 @@ class ImageService implements ImageServiceInterface
         return $uploadPath . DIRECTORY_SEPARATOR . $fileName;
     }
 
-    private function moveFileToUploads(array $fileInfo, string $destFileName): string
+    private function moveFileToUploads(UploadedFile $file, string $destFileName): string
     {
-        $fileName = $fileInfo['name'];
+        $fileName = $file->getClientOriginalName();
         $destPath = $this->getUploadPath($destFileName);
-        $srcPath = $fileInfo['tmp_name'];
+        $srcPath = $file->getRealPath();
 
         if (!@move_uploaded_file($srcPath, $destPath))
         {

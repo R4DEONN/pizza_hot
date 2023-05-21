@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Service\ImageServiceInterface;
 use App\Service\UserServiceInterface;
+use App\Controller\Input\RegisterUserInput;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,26 +29,41 @@ class UserController extends AbstractController
 
     public function index(): Response
     {
-        $vars['host'] = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
-        return $this->render('auth/register.html.twig', $vars);
+        return $this->redirectToRoute('catalog');
+//        $vars['host'] = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+//        return $this->render('auth/register.html.twig', $vars);
     }
 
-    public function createUser(Request $request): Response
+    public function register(Request $request): Response
     {
-        $imagePath = (isset($_FILES['avatar'])) ? $this->imageService->moveImageToUploads($_FILES['avatar']) : null;
+        $input = new RegisterUserInput();
+        $form = $this->createForm(RegisterUserInput::class, $input, [
+            'action' => $this->generateUrl('signup')
+        ]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $imageData = $form->get('avatar')->getData();
+            $imagePath = null;
+            if ($imageData !== null)
+            {
+                $imagePath = $this->imageService->moveImageToUploads($imageData);
+            }
+            $input = $form->getData();
+            $this->userService->register(
+                $input->getFirstName(),
+                $input->getLastName(),
+                $input->getEmail(),
+                $input->getPassword(),
+                $input->getPhone(),
+                $imagePath
+            );
 
-        $this->userService->createUser(
-            $request->get(self::FIRST_NAME),
-            $request->get(self::LAST_NAME),  
-            $request->get(self::EMAIL),  
-            $request->get(self::PHONE),
-            $imagePath,
-        );
+            return $this->redirectToRoute('signin');
+        }
 
-        return $this->redirectToRoute(
-            'catalog',
-            [],
-            Response::HTTP_SEE_OTHER
-        );
+        return $this->render('auth/register.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

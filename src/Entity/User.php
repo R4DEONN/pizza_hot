@@ -10,16 +10,18 @@ class User
    private string $firstName;
    private string $lastName;
    private string $email;
+   private string $password;
    private string $phone;
    private ?string $avatarUrl;
    private int $role;
 
-   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $phone, ?string $avatarPath, int $role)
+   public function __construct(?int $id, string $firstName, string $lastName, string $email, string $password, string $phone, ?string $avatarPath, int $role)
    {
        $this->id = $id;
        $this->firstName = $firstName;
        $this->lastName = $lastName;
        $this->email = $email;
+       $this->password = $password;
        $this->phone = $phone;
        $this->avatarUrl = $avatarPath;
        $this->role = $role;
@@ -44,6 +46,11 @@ class User
    public function getEmail(): string
    {
        return $this->email;
+   }
+
+   public function getPassword(): string
+   {
+       return $this->password;
    }
 
    public function getPhone(): string

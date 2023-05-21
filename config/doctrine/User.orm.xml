@@ -14,6 +14,7 @@
         <field name="firstName" column="first_name" type="string" length="255" nullable="false" />
         <field name="lastName" column="last_name" type="string" length="255" nullable="false" />
         <field name="email" column="email" type="string" length="255" nullable="false" unique="true" />
+        <field name="password" column="password" type="string" length="255" nullable="false" />
         <field name="phone" column="phone" type="string" length="30" nullable="false" />
         <field name="avatarUrl" column="avatar_url" type="string" length="255" nullable="true" />
         <field name="role" column="role" type="integer" default="0" />

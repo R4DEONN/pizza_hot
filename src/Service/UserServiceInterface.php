@@ -5,5 +5,11 @@ namespace App\Service;
 
 interface UserServiceInterface
 {
-    public function createUser(string $firstName, string $lastName, string $email, string $phone, string $imageUrl);
+    public function register(
+        string $firstName,
+        string $lastName,
+        string $email,
+        string $password,
+        string $phone,
+        ?string $imageUrl): void;
 }

@@ -27,8 +27,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 31px;
-    width: 100%;
-    max-width: 546px;
+    width: 546px;
 }
 
 .form-row_title
@@ -38,7 +37,7 @@
     color: #3F434B;
 }
 
-.form-row_input
+.form-row__input
 {
     width: 100%;
     padding: 16px;
@@ -76,6 +75,7 @@
 
 .input-file-btn 
 {
+  width: 41%;
 	cursor: pointer;
 	text-decoration: none;
     font: 400 16px/1.13 "Sansation";
@@ -125,7 +125,7 @@
 	background-color: #eee;
 }
 
-.form-row_submit
+.form-row__submit
 {
     padding: 15px 7.5%;
     font: 400 25px/1.13 "Sansation";

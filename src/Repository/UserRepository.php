@@ -8,7 +8,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
-class UserRepository
+class UserRepository implements UserRepositoryInterface
 {
     private EntityManagerInterface $entityManager;
     private EntityRepository $repository;
@@ -26,4 +26,8 @@ class UserRepository
         return $user->getId();
     }
 
+    public function findByEmail(string $email): ?User
+    {
+        return $this->repository->findOneBy(['email' => $email]);
+    }
 }
