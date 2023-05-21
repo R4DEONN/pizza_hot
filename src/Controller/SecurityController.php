@@ -26,17 +26,6 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-//        $input = new LoginUserInput();
-//        $form = $this->createForm(LoginUserInput::class, $input);
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid())
-//        {
-//            $input = $form->getData();
-//            if ($this->userService->isUser($input->getEmail(), $input->getPassword()))
-//            {
-//                return $this->redirectToRoute('index');
-//            }
-//        }
         $error = $authenticationUtils->getLastAuthenticationError();
 
         return $this->render('auth/login.html.twig', [

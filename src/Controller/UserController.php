@@ -13,11 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
-    private const EMAIL = "email";
-    private const LAST_NAME = "lastName";
-    private const FIRST_NAME = "firstName";
-    private const PHONE = "phone";
-
     private UserServiceInterface $userService;
     private ImageServiceInterface $imageService;
     
