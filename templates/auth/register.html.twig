@@ -1,4 +1,4 @@
-{% extends "footer.html.twig" %}
+{% extends "header.html.twig" %}
 
 {% block title %}
   Регистрация
@@ -46,6 +46,7 @@
       <div class="form_form-row form-row">
         {{ form_widget(form.register, { 'label': 'Регистрация' }) }}
       </div>
+      <p class="form-row__description">Уже есть аккаунт? Жми <a class="form-row__ref" href="/signin">войти</a></p>
     </div>
     {{ form_end(form) }}
 

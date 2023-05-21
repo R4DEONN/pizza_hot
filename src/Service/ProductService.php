@@ -24,7 +24,8 @@ class ProductService implements ProductServiceInterface
             $pizza->getTitle(),
             $pizza->getSubtitle(),
             $pizza->getPrice(),
-            $pizza->getImageUrl()
+            $pizza->getImageUrl(),
+            false
         );
     }
 
@@ -40,9 +41,21 @@ class ProductService implements ProductServiceInterface
                 $pizza->getTitle(),
                 $pizza->getSubtitle(),
                 $pizza->getPrice(),
-                $pizza->getImageUrl()
+                $pizza->getImageUrl(),
+                false
             );
         }
         return $pizzasView;
+    }
+
+    public function deleteProduct(int $id): void
+    {
+        $product = $this->productRepository->findById($id);
+        if ($product === null)
+        {
+            return;
+        }
+
+        $this->productRepository->delete($product);
     }
 }

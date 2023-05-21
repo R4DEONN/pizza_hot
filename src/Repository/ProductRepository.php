@@ -33,6 +33,12 @@ class ProductRepository
      */
     public function findById(int $id): ?Product
     {
-        return $this->repository->findOneBy(['id' => (string) $id]);
+        return $this->repository->find($id);
+    }
+
+    public function delete(Product $product): void
+    {
+        $this->entityManager->remove($product);
+        $this->entityManager->flush();
     }
 }

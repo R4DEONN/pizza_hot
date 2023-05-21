@@ -1,4 +1,4 @@
-{% extends "footer.html.twig" %}
+{% extends "headerAuth.html.twig" %}
 
 {% block title %}
     Оформление заказа
@@ -6,16 +6,18 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="//{{ host }}/css/products/order.css" />
+    <link rel="stylesheet" href="/css/order/order.css" />
 {% endblock %}
 
 {% block main %}
     <main class="order">
-        <img src="//{{ host }}/image/{{ pizza.imageUrl }}" />
-        <p>{{ pizza.title }}</p>
-        <p>{{ pizza.subtitle }}</p>
-        <form>
-            <button type="submit">Оплатить {{ pizza.price }} ₽</button>
-        </form>
+        <div class="order__pizza">
+            <img src="/image/{{ pizza.imageUrl }}" />
+            <div class="order__description">
+                <p class="order__text">Название: {{ pizza.title }}</p>
+                <p class="order__text">Состав: {{ pizza.subtitle }}</p>
+            </div>
+        </div>
+        <p class="order__message">Пицца успешно куплена</p>
     </main>
 {% endblock %}

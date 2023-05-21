@@ -19,12 +19,34 @@ class StorefrontController extends AbstractController
 
     public function index(): Response
     {
+        $user = $this->getUser();
         $pizzasView = $this->productService->listProduct();
+        foreach ($pizzasView as $pizza)
+        {
+            $pizza->setCanRemove($user->isAdmin());
+        }
 
         $host = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
         return $this->render('product/catalog.html.twig', [
            'pizzas' => $pizzasView,
            'host' => $host
         ]);
+    }
+
+    public function deleteProduct(int $productId): Response
+    {
+        $user = $this->getUser();
+        $product = $this->productService->findById($productId);
+        if ($product === null)
+        {
+            return $this->redirect('index');
+        }
+        if (!$user->isAdmin())
+        {
+            throw $this->createNotFoundException();
+        }
+        $this->productService->deleteProduct($productId);
+        
+        return $this->redirectToRoute('index');
     }
 }

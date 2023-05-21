@@ -52,7 +52,19 @@
     color: #E81A1A;
 }
 
-.input-file 
+.form-row__description
+{
+    font: 400 14px/1.14 "Sansation";
+    color: #3F434B;
+    margin: 0;
+}
+
+.form-row__ref
+{
+    color: #3F434B;
+}
+
+.input-file
 {
     display: flex;
     align-items: stretch;

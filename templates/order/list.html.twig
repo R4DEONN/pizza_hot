@@ -1,0 +1,22 @@
+{% extends "headerAuth.html.twig" %}
+
+{% block title %}
+  История Заказов
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="/css/order/history.css" />
+{% endblock %}
+
+
+{% block main %}
+  <p>История заказов</p>
+  {% for product in products %}
+    <div>
+      <span>Название пиццы: {{ product.productName }}</span>
+      <span>Цена: {{ product.price }} ₽</span>
+      <span>Дата заказа: {{ product.orderedAt|date("Y-m-d H:i:sP")  }}</span>
+    </div>
+  {% endfor %}
+{% endblock %}

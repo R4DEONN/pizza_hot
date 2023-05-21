@@ -5,4 +5,36 @@
     padding: 0 6.6%;
     box-sizing: border-box;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__nav
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: 60px;
+    margin-right: 97px;
+}
+
+.header__catalog
+{
+    text-decoration: none;
+    font: 400 18px/1.33 "Sansation";
+    color: #973041;
+}
+
+.header__order-history
+{
+    text-decoration: none;
+    font: 400 18px/1.33 "Sansation";
+    color: #973041;
+}
+
+.header__logout
+{
+    text-decoration: none;
+    font: 400 18px/1.33 "Sansation";
+    color: #973041;
 }

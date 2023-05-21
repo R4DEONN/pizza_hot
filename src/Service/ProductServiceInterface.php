@@ -9,4 +9,6 @@ interface ProductServiceInterface
 {
     public function findById(int $id): ProductData;
     public function listProduct(): array;
+
+    public function deleteProduct(int $id): void;
 }

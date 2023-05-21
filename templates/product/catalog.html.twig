@@ -1,4 +1,4 @@
-{% extends "footer.html.twig" %}
+{% extends "headerAuth.html.twig" %}
 
 {% block title %}
   Каталог
@@ -6,7 +6,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-  <link rel="stylesheet" href="//{{ host }}/css/products/catalog.css" />
+  <link rel="stylesheet" href="/css/products/catalog.css" />
 {% endblock %}
 
 {% block main %}
@@ -15,7 +15,7 @@
     {% for pizza in pizzas  %}
     <article class="catalog_product product">
         <main class="product_content">
-            <img src="//{{ host }}/image/{{ pizza.imageUrl }}" alt="{{ pizza.title }}" class="product_image" />
+            <img src="/image/{{ pizza.imageUrl }}" alt="{{ pizza.title }}" class="product_image" />
             <p class="product_title">{{ pizza.title }}</p>
             <p class="product_description">
                 {{ pizza.subtitle }}
@@ -27,6 +27,11 @@
                 <button class="product_select">Заказать</button>
             </a>
         </footer>
+        {% if pizza.canRemove %}
+            <form action="{{ path('delete_product', {productId: pizza.id}) }}" method="post">
+                <button type="submit" class="product_select">Удалить</button>
+            </form>
+        {% endif %}
     </article>
     {% endfor %}
   </main>

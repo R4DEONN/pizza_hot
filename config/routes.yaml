@@ -24,3 +24,13 @@ order:
     path: /order/{productId}
     methods: GET
     controller: App\Controller\OrderForm::index
+
+history:
+    path: /order/list/all
+    methods: GET
+    controller: App\Controller\OrderHistory::history
+
+delete_product:
+    path: /product/{productId}/delete
+    methods: POST
+    controller: App\Controller\StorefrontController::deleteProduct

@@ -12,13 +12,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    private UserServiceInterface $userService;
-
-    public function __construct(UserServiceInterface $userService)
-    {
-        $this->userService = $userService;
-    }
-
     public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
         if ($this->getUser())

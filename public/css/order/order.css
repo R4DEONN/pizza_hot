@@ -1,0 +1,32 @@
+.order
+{
+    padding: 30px;
+}
+
+.order__pizza
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.order__description
+{
+    width: 366px;
+}
+
+.order__text
+{
+    font: 400 16px/1.13 "Sansation";
+    color: #000000;
+}
+
+.order__message
+{
+    text-align: center;
+    font: 400 20px/1.44 "Sansation";
+    color: #000000;
+}

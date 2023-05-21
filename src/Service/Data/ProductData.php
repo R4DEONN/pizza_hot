@@ -11,18 +11,22 @@ class ProductData
     private int $price;
     private string $imageUrl;
 
+    private bool $canRemove;
+
     public function __construct(
         ?int $id,
         string $title,
         string $subtitle,
         int $price,
-        string $imageUrl)
+        string $imageUrl,
+        ?bool $canRemove)
     {
         $this->id = $id;
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->price = $price;
         $this->imageUrl = $imageUrl;
+        $this->canRemove = $canRemove;
     }
 
     public function getId(): ?int
@@ -50,6 +54,19 @@ class ProductData
         return $this->imageUrl;
     }
 
+    public function getCanRemove(): bool
+    {
+        return $this->canRemove;
+    }
+
+    /**
+     * @param bool $canRemove
+     */
+    public function setCanRemove(bool $canRemove): void
+    {
+        $this->canRemove = $canRemove;
+    }
+
     public function toArray(): array
     {
         return [
@@ -58,6 +75,7 @@ class ProductData
             'subtitle' => $this->getSubtitle(),
             'price' => $this->getPrice(),
             'imageUrl' => $this->getImageUrl(),
+            'canRemove' => $this->getCanRemove(),
         ];
     }
 }

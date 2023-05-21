@@ -1,4 +1,4 @@
-{% extends "footer.html.twig" %}
+{% extends "header.html.twig" %}
 
 {% block title %}
   Логинация
@@ -29,6 +29,7 @@
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         <button class="form-row__submit" type="submit">Вход</button>
       </div>
+      <p class="form-row__description">Еще нет аккаунта? Жми <a class="form-row__ref" href="/signup">зарегестрироваться</a></p>
     </form>
   </main>
 {% endblock %}
