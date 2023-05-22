@@ -29,6 +29,12 @@
     position: relative;
 }
 
+.product__mock-image
+{
+    width: 241px;
+    height: 241px;
+}
+
 .product_image
 {
     max-width: 241px;
@@ -48,6 +54,7 @@
 
 .product_submenu
 {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,4 +83,11 @@
 .product_select:hover
 {
     background: #FFA0A0;
+}
+
+.product__delete
+{
+    position: absolute;
+    bottom: -38px;
+    right: 1px;
 }

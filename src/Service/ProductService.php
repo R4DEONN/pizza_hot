@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use App\Service\Data\ProductData;
 
@@ -46,6 +47,19 @@ class ProductService implements ProductServiceInterface
             );
         }
         return $pizzasView;
+    }
+
+    public function create(string $title, string $subtitle, int $price, string $image): void
+    {
+        $product = new Product(
+            null,
+            $title,
+            $subtitle,
+            $price,
+            $image
+        );
+
+        $this->productRepository->add($product);
     }
 
     public function deleteProduct(int $id): void

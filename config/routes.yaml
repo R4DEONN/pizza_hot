@@ -20,6 +20,10 @@ catalog:
     methods: GET
     controller: App\Controller\StorefrontController::index
 
+create_product:
+    path: /product/create
+    controller: App\Controller\ProductController::create
+
 order:
     path: /order/{productId}
     methods: GET

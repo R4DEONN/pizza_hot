@@ -21,15 +21,10 @@ class StorefrontController extends AbstractController
     {
         $user = $this->getUser();
         $pizzasView = $this->productService->listProduct();
-        foreach ($pizzasView as $pizza)
-        {
-            $pizza->setCanRemove($user->isAdmin());
-        }
 
-        $host = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
         return $this->render('product/catalog.html.twig', [
            'pizzas' => $pizzasView,
-           'host' => $host
+            'isAdmin' => $user->isAdmin(),
         ]);
     }
 

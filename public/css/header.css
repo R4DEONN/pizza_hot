@@ -1,5 +1,10 @@
 .header
 {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     background: #F9EAED;
     border-bottom: 2px solid #F0DBE0;
     padding: 0 6.6%;

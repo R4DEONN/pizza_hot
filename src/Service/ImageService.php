@@ -15,7 +15,7 @@ class ImageService implements ImageServiceInterface
         'image/webp' => '.webp',
     ];
 
-    public function moveImageToUploads(UploadedFile $file): ?string
+    public function moveImageToUploadsAndGetPath(UploadedFile $file): ?string
     {
         if ($file->getError() === UPLOAD_ERR_NO_FILE)
         {
@@ -26,7 +26,7 @@ class ImageService implements ImageServiceInterface
         $type = $file->getMimeType();
         $imageExt = self::ALLOWED_MIME_TYPES_MAP[$type] ?? null;
 
-        if (!$imageExt)
+        if ($imageExt === null)
         {
             throw new InvalidArgumentException("File '$name' is not an image");
         }

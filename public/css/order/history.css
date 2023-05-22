@@ -1,0 +1,31 @@
+.main
+{
+    min-height: 622px;
+}
+
+.title
+{
+    width: 100%;
+    text-align: center;
+    margin: 52px auto 32px;
+    font: 400 32px/1.13 "Sansation";
+    color: #000000;
+}
+
+.table
+{
+    border: 1px solid #000000;
+    width: 610px;
+    margin: 0 auto 52px;
+    display: grid;
+    grid-template-columns: 250px 180px 180px;
+    grid-auto-rows: 25px;
+}
+
+.table__el
+{
+    font: 400 18px/1.33 "Sansation";
+    color: #000000;
+    text-align: center;
+    border: 1px solid #000000;
+}

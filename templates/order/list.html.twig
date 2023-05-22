@@ -11,12 +11,18 @@
 
 
 {% block main %}
-  <p>История заказов</p>
-  {% for product in products %}
-    <div>
-      <span>Название пиццы: {{ product.productName }}</span>
-      <span>Цена: {{ product.price }} ₽</span>
-      <span>Дата заказа: {{ product.orderedAt|date("Y-m-d H:i:sP")  }}</span>
+  <div class="main">
+    <p class="title">История заказов</p>
+    <div class="table">
+      <span class="table__el">Название</span>
+      <span class="table__el">Цена</span>
+      <span class="table__el">Дата заказа</span>
+      {% for product in products %}
+          <span class="table__el">{{ product.productName }}</span>
+          <span class="table__el">{{ product.price }} ₽</span>
+          <span class="table__el">{{ product.orderedAt|date("d.m.Y H:i")  }}</span>
+      {% endfor %}
     </div>
-  {% endfor %}
+  </div>
+
 {% endblock %}

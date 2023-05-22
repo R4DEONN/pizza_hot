@@ -42,7 +42,7 @@ class UserController extends AbstractController
             $imagePath = null;
             if ($imageData !== null)
             {
-                $imagePath = $this->imageService->moveImageToUploads($imageData);
+                $imagePath = $this->imageService->moveImageToUploadsAndGetPath($imageData);
             }
             $input = $form->getData();
             $this->userService->register(

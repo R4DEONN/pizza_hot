@@ -16,6 +16,7 @@ class OrderService implements OrderServiceInterface
         $this->orderRepository = $orderRepository;
     }
 
+
     public function createOrder(string $productName, int $price, int $userId)
     {
         $order = new Order(
@@ -27,6 +28,10 @@ class OrderService implements OrderServiceInterface
         $this->orderRepository->store($order);
     }
 
+    /**
+     * @param int $userId
+     * @return OrderData[]
+     */
     public function listOrdersByUserId(int $userId): array
     {
         $orders = $this->orderRepository->listById($userId);

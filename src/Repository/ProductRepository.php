@@ -36,6 +36,12 @@ class ProductRepository
         return $this->repository->find($id);
     }
 
+    public function add(Product $product): void
+    {
+        $this->entityManager->persist($product);
+        $this->entityManager->flush();
+    }
+
     public function delete(Product $product): void
     {
         $this->entityManager->remove($product);

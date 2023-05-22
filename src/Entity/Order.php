@@ -18,7 +18,10 @@ class Order
         $this->id = $id;
         $this->productName = $productName;
         $this->price = $price;
-        $this->orderedAt = new DateTimeImmutable();
+        $original = new DateTimeImmutable("now", new \DateTimeZone('UTC'));
+        $timezone = timezone_name_from_abbr("Europe/Moscow", 3*3600, 0);
+        $modified = $original->setTimezone(new \DateTimeZone($timezone));
+        $this->orderedAt = $modified;
         $this->userId = $userId;
     }
 

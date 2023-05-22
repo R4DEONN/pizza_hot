@@ -1,0 +1,52 @@
+{% extends "headerAuth.html.twig" %}
+
+{% block title %}
+    Создание пиццы
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/auth/auth.css" />
+{% endblock %}
+
+
+{% block main %}
+    <main class="content">
+        <p class="content_title">Создание новой пиццы</p>
+        {{ form_start(form, {'class': 'content_form form'}) }}
+        <div class="content_form form">
+            <div class="form_form-row form-row">
+                <p class="form-row_title">Название пиццы*</p>
+                {{ form_widget(form.title) }}
+            </div>
+            <div class="form_form-row form-row">
+                <p class="form-row_title">Состав*</p>
+                {{ form_widget(form.subtitle) }}
+            </div>
+            <div class="form_form-row form-row">
+                <p class="form-row_title">Цена*</p>
+                {{ form_widget(form.price) }}
+            </div>
+            <div class="form_form-row form-row">
+                <p class="form-row_title">Изображение пиццы*</p>
+                <label class="input-file">
+                    <span class="input-file-btn">Выберите файл</span>
+                    {{ form_widget(form.image) }}
+                    <span class="input-file-text" type="text">Файл не выбран</span>
+                </label>
+            </div>
+            <div class="form_form-row form-row">
+                {{ form_widget(form.create, { 'label': 'Создать пиццу' }) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </main>
+
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('.input-file input[type=file]').on('change', function(){
+            let file = this.files[0];
+            $(this).closest('.input-file').find('.input-file-text').html(file.name);
+        });
+    </script>
+{% endblock %}
