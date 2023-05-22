@@ -28,7 +28,7 @@ class OrderRepository
      * @param int $userId
      * @return Order[]
      */
-    public function listById(int $userId): array
+    public function listOrdersByUserId(int $userId): array
     {
         return $this->repository->findBy(
             array('userId' => $userId),

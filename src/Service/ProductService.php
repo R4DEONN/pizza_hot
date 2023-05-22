@@ -16,9 +16,14 @@ class ProductService implements ProductServiceInterface
         $this->productRepository = $productRepository;
     }
 
-    public function findById(int $id): ProductData
+    public function findById(int $id): ?ProductData
     {
         $pizza = $this->productRepository->findById($id);
+
+        if ($pizza === null)
+        {
+            throw new \InvalidArgumentException("Пицца с номером $id не найдена");
+        }
 
         return new ProductData(
             $pizza->getId(),
@@ -30,6 +35,9 @@ class ProductService implements ProductServiceInterface
         );
     }
 
+    /**
+     * @return ProductData[]
+     */
     public function listProduct(): array
     {
         $pizzas = $this->productRepository->listAll();
@@ -49,7 +57,11 @@ class ProductService implements ProductServiceInterface
         return $pizzasView;
     }
 
-    public function create(string $title, string $subtitle, int $price, string $image): void
+    public function create(
+        string $title,
+        string $subtitle,
+        int $price,
+        string $image): void
     {
         $product = new Product(
             null,

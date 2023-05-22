@@ -25,8 +25,6 @@ class UserController extends AbstractController
     public function index(): Response
     {
         return $this->redirectToRoute('catalog');
-//        $vars['host'] = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
-//        return $this->render('auth/register.html.twig', $vars);
     }
 
     public function register(Request $request): Response

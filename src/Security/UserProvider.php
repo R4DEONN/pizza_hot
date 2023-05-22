@@ -28,16 +28,6 @@ class UserProvider implements UserProviderInterface
         return new SecurityUser($user->getId(), $user->getEmail(), $user->getPassword(), $user->getRole());
     }
 
-    public function loadUserByIdentifier(string $identifier): UserInterface
-    {
-        $user = $this->repository->findByEmail($identifier);
-        if ($user === null)
-        {
-            throw new UserNotFoundException($identifier);
-        }
-        return new SecurityUser($user->getId(), $user->getEmail(), $user->getPassword(), $user->getRole());
-    }
-
     public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof SecurityUser)

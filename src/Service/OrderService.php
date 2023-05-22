@@ -34,7 +34,7 @@ class OrderService implements OrderServiceInterface
      */
     public function listOrdersByUserId(int $userId): array
     {
-        $orders = $this->orderRepository->listById($userId);
+        $orders = $this->orderRepository->listOrdersByUserId($userId);
 
         $ordersView = [];
         foreach ($orders as $order)
